@@ -1,0 +1,42 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <meta charset= "utf-8">
+
+        <script>
+            /* js 변수 선언 및 활용*/
+            var name = "프로메테우스"
+            //사용자 정의 함수
+            function myFun(){
+                var var1 = "var1";// 로컬
+                var2 = "var2";// 전역변수
+                document.write(var1+"<br>");
+                document.write(var2+"<br>");
+            }
+        </script>
+    </head>
+    <body>
+        <script>
+            //alert(name);
+            document.write(name+"<br>");
+            console.log(name);//디버깅용 함수
+            myFun();
+            document.write("<hr>");
+
+            function myFun2(){
+                document.write(name+"<br>");    
+                document.write(var2+"<br>")
+            }
+            myFun2();
+            document.write("<br>************<br>");
+
+            function myFun3(v){
+                document.write(v + "<br>");
+            }
+            myFun3(1);
+            myFun3("문자열");
+            myFun3(1, "문자열");
+            myFun3();
+        </script>
+    </body>
+</html>

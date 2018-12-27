@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+<body>
+    <div id="viewOne"></div>
+    <br>
+    <button onclick="viewData()">list 보이기</button>
+    
+    <script>
+       function viewData(){ 
+            var fruits, text, fLen, i;
+            fruits = ["Banana", "Orange", "Apple", "Mango"];
+            fLen = fruits.length;
+
+            text = "<ul>";
+            for (i = 0; i < fLen; i++) {
+            text += "<li>" + fruits[i] + "</li>";
+            }
+            text += "</ul>";
+            
+            document.getElementById("viewOne").innerHTML = text;
+
+            //document.write(text);
+
+            //배열 객체 생성
+            data = new Array(10, 20, 30, 40);
+            console.log(data);
+            data.pop();
+            console.log(data.pop());
+            
+            
+            console.log("------")
+
+            data2 = new Array('B','A','E','A');
+            console.log(data2);//['B','A','E','A']
+            console.log(data2.sort());//
+            console.log(data2);
+
+    }
+    </script>
+</body>

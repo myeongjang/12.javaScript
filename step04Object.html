@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>step04Object.html</title>
+    </head>
+    <body>
+        <h2>Java Script Object</h2>
+
+        1. 객체 기반 언어<br>
+        2. 내장 객체 존재<br>
+        3. 사용자 정의 존재<br>
+        <br><hr><br>
+        
+        * 객체 생성 방법 * <br>
+        1. object 생성자 활용<br>
+        2. 객 리터럴 방식 활용<br>
+
+        <script>
+            //1. 객체 생성
+            console.log("--1. object 생성자 --")
+            
+            //객체 생성
+            var data = new Object();
+            
+            //멤버 변수 선언 및 값으로 초기화
+            data.name = "명장"
+            data.age = 20;
+            console.log(data.name + " " + data.age);
+
+            console.log(typeof data);
+            console.log("--2. 객체 리터럴 방식의 객체 생성 --");
+
+            var person = {
+                name : '현서2',
+                age : 30
+            }
+            console.log(person.name);
+            //이미 존재하는 객체에 새로운 property 생성
+            person.job = "IT파워맨";
+            console.log(person.job);
+
+            //객체가 보유한 속성(property) 명만 출력
+            console.log("** property 도출 **");
+            for(key in person){
+                console.log(key);
+            }
+            console.log("** property명으로 value값 출력")
+            for (key in person){
+                console.log(key, person[key]);
+            }
+
+            //person의 age라는 property 삭제 하기
+            // delete
+            delete person.age;
+            console.log(person.age);
+            console.log("** 선택된 자 **")
+            var person = {
+                name : "박현서",
+                getName : function() {
+                    return this.name;
+                }
+            };
+            //박현서
+            console.log(person.getName("좀여장"));
+            
+            
+            
+            console.log("** 구글 차트의 일부 코드 활용 **")
+            var options = {
+                title: 'Company Performance',
+                hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+                vAxis: {minValue: 0}
+              };
+            console.log(options.title);
+            console.log(options.hAxis.title);
+            console.log(options.hAxis.titleTextStyle.color)
+
+            console.log("** 구글 차트 배열 데이터 **");
+            var arrayData =[
+                ['Year', 'Sales', 'Expenses'],
+                ['2013',  1000,      400],
+                ['2014',  1170,      460],
+                ['2015',  660,       1120],
+                ['2016',  1030,      540]
+            ];
+            console.log(arrayData[4][1]);
+        </script>
+
+    </body>
+</html>
