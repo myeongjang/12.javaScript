@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>step07JSON.html</title>
+    </head>
+<body>
+    <h2>JSON 학습</h2>
+
+    1. JSON : Java Script Object Notation<br>
+    2. 용도 : 경량급 text 기반의 
+
+
+    4. 사용 빈도 : 서버에서 클라이언트로 응답시 
+    5. 참고 사항 : <br>
+        일반 text -> csv -> xml -> JSON 형태
+
+    <br><hr><br>
+    <font color='red'>
+        <b>JSON 형태로 제공시 반드시 key:value 는 쌍따옴표 권장</b><br>
+        1. JSON.parse()로 처리 : 제약 조건 있음("")<br>
+        2. eval()로 처리 : 쌍 or 단일 따옴표 무관, 배열은 [], 문자열은 ()
+    </font>
+    <script>
+        obj1 = {
+            name : '현경'    
+        }
+        console.log(obj1.name);
+        console.log(obj1['name']);
+        
+        console.log("----------")
+
+        obj2 = {
+            'name' : '민지'
+        }
+        console.log(obj2.name);
+        console.log(obj2['name']);
+
+        obj3 = {
+            "name" : "민지"
+        }
+        console.log(obj3.name);
+        console.log(obj3['name']);
+
+        console.log("----서버에서 받은 데이터라 가정 : 가공(parsing)전++-----")
+        /*
+        obj4 = "{'name': '민지'}"
+        console.log(obj4.name);
+        console.log(obj4['name']);
+        */
+        //step01 - "{'name' : '민지'}" 형태의 문자열, JSON.parse
+        console.log("----서버에서 받은 데이터라 가정 : 가공(parsing)후++-----")
+
+        obj5 = "{'name': '민지'}"
+        //obj5 = JSON.parse(obj5);  에러 발생
+        obj5 = eval("("+obj5+")")
+        console.log(obj5.name);
+        console.log(obj5['name']);
+        
+        
+        console.log("----서버에서 받은 데이터라 가정 : 가공(parsing)후++-----")
+
+        obj6 = '{"name": "민지"}'
+        obj6 = JSON.parse(obj6);
+        console.log(obj6.name);
+        console.log(obj6['name']);
+
+    </script>
+</body>
+</html>

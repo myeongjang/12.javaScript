@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utg-8">
+    <title>step09Chart.html</title>
+
+    <!--
+        google chart libray 사용 선언
+        1. 현 소스 처럼 http://~ 사용
+        2. 로컬에 다운로드 후에 사용
+
+    -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- 내부에 js 로직 구현 tag -->
+    <script type="text/javascript">
+      // 구글 차트 사용 선언, 차트 선별 이름(모듈 구분)
+      google.charts.load('current', {'packages':['bar']});
+      /*
+      1. 데이터가 응답이 되면 차트 그리는 함수 개발 및 함수 실행 등록
+      2. 응답 완료를 자동 감지하는 기술
+        : 콜백 함수 등록
+        : 해당 시점이 되면 등록된 함수가 자동 실행되는 기술
+      3. 비동기 기술 적용시에 서버에서 전송되는 데이터 받아서 차트 그리기
+        - parameter 값 즉 데이터는 서버에서 문자열로 전송
+        -> js 객체로 변환(배열) 및 적용  */
+
+      google.charts.setOnLoadCallback(drawChart);
+      /*
+      */
+
+      function drawChart() {
+          //step01 - 원천 소스
+        /*var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses', 'Profit','price'],
+          ['2014', 1000, 400, 200, 180],
+          ['2015', 1170, 460, 250, 150],
+          ['2016', 660, 1120, 300, 120],
+          ['2017', 1030, 540, 350,500],
+          ['2018', 1907, 245, 230,100]
+        ]);*/
+        var value = "['Year', 'Sales', 'Expenses', 'Profit','price'],['2014', 1000, 400, 200, 180],['2015', 1170, 460, 250, 150],['2016', 660, 1120, 300, 120],['2017', 1030, 540, 350,500],['2018', 1907, 245, 230,100]"
+        
+        var data = google.visualization.arrayToDataTable(eval("(["+value+"])"));
+
+        var options = {
+          chart: {
+            title: '회사 활약',
+            subtitle: 'Sales, Expenses, and Profit: 2014-2018',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('viewChart'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+  </head>
+  <body>
+    <div id="viewChart" style="width: 800px; height: 500px;"></div>
+  </body>
+</html>
